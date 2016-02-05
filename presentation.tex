@@ -1,0 +1,207 @@
+\documentclass[unknownkeysallowed]{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+ \usetheme{default}    % or try Darmstadt, Madrid, Warsaw, ...
+ \useoutertheme[subsection=false]{miniframes}
+  %\usecolortheme{abatross} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[page number]{}
+\setbeamertemplate{bibliography item}{}
+%gets rid of navigation symbols
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+\setbeamertemplate{headline}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{float}
+\usepackage{tipa}
+\usepackage{multimedia}
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{subfigure}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{listings}
+\def\inline{\lstinline[basicstyle=\ttfamily]}
+\usefonttheme[onlymath]{serif}
+\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26}
+  \definecolor{darkpastelgreen}{rgb}{0.01, 0.75, 0.24}
+\definecolor{ao}{rgb}{0.0, 0.5, 1.0}
+\newenvironment{itemize*}%
+  {\begin{itemize}%
+    \setlength{\itemsep}{15pt}%
+    \setlength{\parskip}{0pt}}%
+  {\end{itemize}}
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+
+
+  \setbeamertemplate{itemize* items}[square]
+\title[]{Fun with the low-cost Eye Tribe eye-tracker}
+\institute{Daniel Lawrence\\School of Philosophy, Psychology \& Language Sciences\\The University of Edinburgh}
+
+\date{}
+\begin{document}
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+ 
+\maketitle
+\begin{frame}
+\tableofcontents
+\end{frame}
+\section{Meet the Eye Tribe}
+\begin{frame}{Meet the Eye Tribe}
+\begin{itemize*}
+\item<1->{\$99 Eye-tracker from Denmark-based startup}
+\item<2->{Aimed at a commercial/UX audience...}
+\item<3->{...but an attractive option for bringing experimental methods out of the lab?}
+\item<4->{Michela Bonfieni (Edinburgh)\\ Edwin Dalmaijer (Oxford)}
+\item<5->{Cheap, open-source, accessible, portable}
+\end{itemize*}
+\end{frame}
+\section{Is the Eye Tribe accurate enough?}
+\begin{frame}{Is the Eye Tribe accurate enough?}
+\begin{itemize*}
+\item<1->{Dalmaijer, 2014}
+\item<2->{Comparison of Eye Tribe with Eyelink 1000}
+\item<3->{5 participants completing calibration  and face-viewing tasks}
+\end{itemize*}
+\end{frame}
+\begin{frame}{Is the Eye Tribe accurate enough?}
+Calibration
+\centering
+\includegraphics[scale=0.3]{calib.png}
+\end{frame}
+\begin{frame}{Is the Eye Tribe accurate enough?}
+Free face viewing
+\centering
+\includegraphics[scale=0.3]{face.png}
+\end{frame}
+\begin{frame}{Is the Eye Tribe accurate enough?}
+\begin{itemize*}
+\item<1->{Various metrics in Dalmaijer (2014)}
+\item<2->{Gist: good enough for gaze tracking and pupilometery, less so for saccade metrics}
+\item<3->{Here I'll just show you the fixation plots for both trackers}
+\end{itemize*}
+\end{frame}
+\begin{frame}{Is the Eye Tribe accurate enough?}
+Calibration
+\centering
+\includegraphics[scale=0.3]{calib_results.png}
+\end{frame}
+\begin{frame}{Is the Eye Tribe accurate enough?}
+Free face viewing
+\centering
+\includegraphics[scale=0.3]{face_results.png}
+\end{frame}
+\section{How do I set up the Eye Tribe?}
+\begin{frame}{How do I set up the Eye Tribe?}
+\begin{itemize*}
+\item<1->{Plug and play!}
+\item<2->{~60cm distance}
+\item<3->{Chin rest (recommended)}
+\end{itemize*}
+\end{frame}
+\begin{frame}{How do I set up the Eye Tribe?}
+\centering
+\includegraphics[scale=0.5]{stand.png}
+\end{frame}
+\begin{frame}[fragile]{How do I set up the Eye Tribe?}
+\begin{itemize}
+\item{Execute the Eye Tribe server}
+\item{Example output (JSON):}
+\end{itemize}
+\begin{lstlisting}
+{"frame":{"lefteye":{"avg":{"x":0,"y":0},
+"psize":0,"raw":{"x":0,"y":0},
+"pcenter":{"x":0,"y":0}},
+raw":{"x":0,"y":0},"time":785680700,
+"righteye":{"avg":{"x":0,"y":0},
+"psize":0,"raw":{"x":0,"y":0},
+"pcenter":{"x":0,"y":0}},
+"fix":false,"avg":{"x":0,"y":0},
+"timestamp":"2016-02-04 19:28:30.396",
+"state":8}}
+\end{lstlisting}
+\end{frame}
+\section{How do I prepare an experiment with the Eye Tribe?}
+\begin{frame}{How do I prepare an experiment with the Eye Tribe?}
+\begin{itemize*}
+\item{Edwin Dalmaijer's lab have produced toolkits for Matlab \& Python}
+\item{The Python library (PyGaze) can be used in the OpenSesame experiment designer}
+\item{Python implementation is straightforward}
+\end{itemize*}
+\end{frame}
+\begin{frame}{How do I prepare an experiment with the Eye Tribe?}
+\begin{itemize}
+\item{Examples! \url{https://github.com/danielplawrence/eye_tracking/}}
+\item{Initializing the tracker:\\ \textbf{eyetracker=EyeTracker(disp)}}
+\item{Starting the tracker:\\ \textbf{eyetracker.start\_recording()}}
+\item{Writing to the tracker log:\\ \textbf{eyetracker.log(`Hello World')}}
+\item{Stopping the tracker:\\ \textbf{eyetracker.stop\_recording()}}
+\item{Closing the tracker:\\ \textbf{eyetracker.close()}}
+\end{itemize}
+\end{frame}
+\begin{frame}{An example experiment}
+\begin{itemize*}
+\item{If a speech form is associated with multiple social meanings, are they both activated during sociolinguistic perception? (?)}
+\item{Visual world paradigm}
+\item{Listeners hear speech tokens containing variants known to be associated with a range of social characteristics e.g. age, social class, ...}
+\item{They match them to a set of characters who vary systematically on these dimensions}
+\item{Which alternatives do listeners consider when making their selection?}
+\end{itemize*}
+\end{frame}
+\begin{frame}{An example experiment}
+\center
+\includegraphics[scale=0.25]{experiment.png}
+\end{frame}
+\section{How do I analyze data from the Eye Tribe?}
+\begin{frame}{How do I analyze data from the Eye Tribe?}
+\begin{itemize*}
+\item{The tracker logs fixations at ~30ms/60ms intervals}
+\item{Log start and end of trial in the experiment}
+\item{Use a script to extract fixation data and and code for trial info e.g. selected image}
+\item{`state' provides info regarding tracking quality (`7' is optimal)}
+\item{Use a script to assign xy positions to areas of interest}
+\item{Example code on github page}
+\end{itemize*}
+\end{frame}
+\begin{frame}{How do I analyze data from the Eye Tribe?}
+\centering
+\includegraphics[scale=0.3]{heatmap_demo.png}
+\end{frame}
+\begin{frame}{How do I analyze data from the Eye Tribe?}
+\centering
+\includegraphics[scale=0.4]{aoi_analysis.png}
+\end{frame}
+\section{That's great! Can I have a go?}
+\begin{frame}{That's great! Can I have a go?}
+Sure!
+\begin{itemize*}
+\item{\url{https://github.com/danielplawrence/eye_tracking/}}
+\item{\url{https://peerj.com/preprints/585.pdf}}
+\item{\url{http://theeyetribe.com}}
+\item{\url{http://www.pygaze.org}}
+\end{itemize*}
+\end{frame}
+\end{document}
